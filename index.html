@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALMAZZ IELTS Markazi | Buxoro</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f5ef;
+      color: #101827;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(5, 18, 39, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 205, 96, 0.25);
+    }
+
+    .nav-content {
+      height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #f3c45b, #b98223);
+      display: grid;
+      place-items: center;
+      color: #061529;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      color: #e8eef8;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #f3c45b;
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, #f8d16a, #c68b2d);
+      color: #061529;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(198, 139, 45, 0.28);
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding-top: 120px;
+      background:
+        radial-gradient(circle at 75% 30%, rgba(243, 196, 91, 0.2), transparent 32%),
+        linear-gradient(135deg, #061529 0%, #0a2445 55%, #07162b 100%);
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 50px;
+      padding-bottom: 70px;
+    }
+
+    .eyebrow {
+      color: #f3c45b;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(45px, 6vw, 82px);
+      line-height: 0.98;
+      margin-bottom: 24px;
+      font-family: Georgia, serif;
+      letter-spacing: -1px;
+    }
+
+    .gold {
+      color: #f3c45b;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #d6dfec;
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 42px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f8d16a, #c68b2d);
+      color: #061529;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(243, 196, 91, 0.7);
+      color: #f6d47b;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 650px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid rgba(243, 196, 91, 0.3);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      color: #f3c45b;
+    }
+
+    .stat span {
+      color: #e9eef7;
+      font-size: 14px;
+    }
+
+    .teacher-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(243, 196, 91, 0.28);
+      border-radius: 34px;
+      padding: 34px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      box-shadow: 0 35px 90px rgba(0,0,0,0.35);
+    }
+
+    .teacher-placeholder {
+      position: absolute;
+      top: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 35%, #ffffff, #d7e0ef 35%, #11294d 70%);
+      border: 8px solid rgba(243, 196, 91, 0.42);
+      display: grid;
+      place-items: center;
+      font-size: 90px;
+    }
+
+    .teacher-card::after {
+      content: "IELTS 9.0";
+      position: absolute;
+      top: 260px;
+      right: 28px;
+      background: linear-gradient(135deg, #f8d16a, #b98223);
+      color: #061529;
+      font-size: 32px;
+      font-weight: 900;
+      padding: 18px 22px;
+      border-radius: 22px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .teacher-info {
+      position: relative;
+      z-index: 2;
+      background: rgba(5,18,39,0.72);
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .teacher-info h3 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+    }
+
+    .teacher-info p {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      color: #bd842c;
+      font-weight: 900;
+      letter-spacing: 1.7px;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+      color: #061529;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 45px rgba(6, 21, 41, 0.08);
+      border: 1px solid rgba(6, 21, 41, 0.08);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 25px 65px rgba(6, 21, 41, 0.14);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #061529;
+      color: #f3c45b;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      margin-bottom: 22px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #061529;
+    }
+
+    .card p {
+      color: #546174;
+      font-size: 15px;
+    }
+
+    .dark-section {
+      background: #061529;
+      color: white;
+      border-radius: 38px;
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr 0.7fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 30px 80px rgba(6, 21, 41, 0.22);
+    }
+
+    .dark-section h2 {
+      font-family: Georgia, serif;
+      font-size: 48px;
+      margin-bottom: 14px;
+    }
+
+    .dark-section p {
+      color: #d7dfeb;
+      margin-bottom: 20px;
+    }
+
+    .checks {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .checks li::before {
+      content: "✓";
+      color: #f3c45b;
+      font-weight: 900;
+      margin-right: 10px;
+    }
+
+    .badge9 {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #0d2b53 35%, #061529 60%),
+        linear-gradient(135deg, #f8d16a, #b98223);
+      border: 10px solid #c68b2d;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      margin: auto;
+      box-shadow: 0 20px 70px rgba(0,0,0,0.35);
+    }
+
+    .badge9 span {
+      display: block;
+      color: #f3c45b;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .badge9 strong {
+      display: block;
+      color: white;
+      font-size: 78px;
+      line-height: 1;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .score-card {
+      background: white;
+      padding: 28px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(6, 21, 41, 0.08);
+    }
+
+    .score {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      border: 8px solid #c68b2d;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      font-size: 28px;
+      font-weight: 900;
+      color: #061529;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 36px;
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(6, 21, 41, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quote {
+      font-size: 58px;
+      color: #c68b2d;
+      line-height: 1;
+    }
+
+    .testimonial p {
+      font-size: 20px;
+      color: #253247;
+      margin-bottom: 24px;
+    }
+
+    .stars {
+      color: #d99c35;
+      font-size: 24px;
+    }
+
+    .contact {
+      background: white;
+      border-radius: 32px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr repeat(3, 1fr);
+      gap: 18px;
+      box-shadow: 0 20px 55px rgba(6, 21, 41, 0.09);
+    }
+
+    .contact-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: #f8f5ef;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 150px;
+    }
+
+    .contact-card strong {
+      font-size: 19px;
+      color: #061529;
+      margin-bottom: 8px;
+    }
+
+    .map {
+      background:
+        linear-gradient(135deg, rgba(6,21,41,0.82), rgba(6,21,41,0.65)),
+        radial-gradient(circle at 30% 40%, #f3c45b, transparent 25%);
+      color: white;
+    }
+
+    footer {
+      background: #061529;
+      color: white;
+      padding: 50px 0 22px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .footer-grid h4 {
+      color: #f3c45b;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      color: #c8d3e3;
+      display: block;
+      margin-bottom: 9px;
+      font-size: 15px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      color: #aab7c9;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content,
+      .dark-section,
+      .results,
+      .contact,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .teacher-card {
+        min-height: 470px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cards,
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dark-section {
+        padding: 34px 24px;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      h1 {
+        font-size: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="logo">
+        <span class="logo-badge">A</span>
+        ALMAZZ
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Bosh sahifa</a>
+        <a href="#courses">Kurslar</a>
+        <a href="#mentor">Ustoz</a>
+        <a href="#results">Natijalar</a>
+        <a href="#contact">Aloqa</a>
+      </nav>
+
+      <a href="#contact" class="nav-btn">Ro‘yxatdan o‘tish</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <div class="eyebrow">Buxorodagi ishonchli tanlov</div>
+          <h1>
+            Buxorodagi <br>
+            <span class="gold">premium IELTS</span> <br>
+            o‘quv markazi
+          </h1>
+          <p>
+            IELTS 9.0 mentor bilan aniq strategiya, real mock testlar va natijaga yo‘naltirilgan darslar orqali maqsadingizga yaqinlashing.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">📞 Bepul konsultatsiya</a>
+            <a href="#courses" class="btn-secondary">Kurslarni ko‘rish →</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>IELTS 9.0</strong>
+              <span>asosiy mentor</span>
+            </div>
+            <div class="stat">
+              <strong>Real Mock</strong>
+              <span>imtihon sharoitida testlar</span>
+            </div>
+            <div class="stat">
+              <strong>Small Groups</strong>
+              <span>kichik va samarali guruhlar</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="teacher-card">
+          <div class="teacher-placeholder">👨‍🏫</div>
+          <div class="teacher-info">
+            <h3>Jahongir Isomiddinov</h3>
+            <p>IELTS 9.0 mentor. Speaking, Writing va IELTS strategy bo‘yicha professional yondashuv.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Kurslarimiz</div>
+          <h2 class="section-title">Siz uchun eng yaxshi kurslar</h2>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">🎓</div>
+            <h3>IELTS Preparation</h3>
+            <p>Listening, Reading, Writing va Speaking bo‘yicha to‘liq tayyorgarlik.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📚</div>
+            <h3>General English</h3>
+            <p>Grammar, vocabulary va kundalik muloqot uchun mustahkam baza.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🎤</div>
+            <h3>Speaking Club</h3>
+            <p>Erkin gapirish, pronunciation va confidence oshirish uchun amaliy darslar.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🌍</div>
+            <h3>CEFR</h3>
+            <p>A1 dan C1 gacha darajani oshirish va xalqaro standartga tayyorlanish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Nima uchun Almazz?</div>
+          <h2 class="section-title">Bizning ustunliklarimiz</h2>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="icon">👑</div>
+            <h3>IELTS 9.0 mentor</h3>
+            <p>Yuqori natijaga erishgan ustozdan real tajriba va strategiya.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🎯</div>
+            <h3>Natijaga yo‘naltirilgan</h3>
+            <p>Har bir o‘quvchi uchun aniq yo‘l xaritasi va progress nazorati.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📝</div>
+            <h3>Real practice</h3>
+            <p>Haftalik mock testlar, writing correction va speaking feedback.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Qulay muhit</h3>
+            <p>Kichik guruhlar, zamonaviy sinflar va motivatsion atmosfera.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mentor">
+      <div class="container">
+        <div class="dark-section">
+          <div>
+            <div class="section-label">Asosiy mentor</div>
+            <h2>Jahongir Isomiddinov</h2>
+            <p>
+              IELTS 9.0 natijaga ega mentor. Darslar faqat nazariya emas, real imtihon strategiyasi, vaqtni boshqarish va individual feedback asosida olib boriladi.
+            </p>
+
+            <ul class="checks">
+              <li>Academic IELTS bo‘yicha chuqur tajriba</li>
+              <li>Speaking va Writing uchun individual strategiya</li>
+              <li>Real exam technique va mock test tahlili</li>
+              <li>Har bir o‘quvchi uchun shaxsiy yondashuv</li>
+            </ul>
+          </div>
+
+          <div class="badge9">
+            <div>
+              <span>IELTS</span>
+              <strong>9.0</strong>
+              <span>MENTOR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Natijalarimiz</div>
+          <h2 class="section-title">O‘quvchilarimiz natijalari</h2>
+        </div>
+
+        <div class="results">
+          <div class="score-grid">
+            <div class="score-card">
+              <div class="score">8.0</div>
+              <h3>Aziza N.</h3>
+              <p>Buxoro</p>
+            </div>
+
+            <div class="score-card">
+              <div class="score">7.5</div>
+              <h3>Rustam K.</h3>
+              <p>Buxoro</p>
+            </div>
+
+            <div class="score-card">
+              <div class="score">7.0</div>
+              <h3>Malika S.</h3>
+              <p>Buxoro</p>
+            </div>
+
+            <div class="score-card">
+              <div class="score">8.0</div>
+              <h3>Sardor B.</h3>
+              <p>Buxoro</p>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <div class="quote">“</div>
+            <p>
+              Almazz markazida o‘qib, IELTS’dan 7.5 ball oldim. Darslar juda tushunarli, aniq va natijaga yo‘naltirilgan.
+            </p>
+            <h3>Sevinch R.</h3>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Bizning manzil</div>
+          <h2 class="section-title">Buxoroda sizni kutib qolamiz!</h2>
+        </div>
+
+        <div class="contact">
+          <div class="contact-card map">
+            <strong>ALMAZZ IELTS MARKAZI</strong>
+            <p>Buxoro shahri. Aniq manzil keyin qo‘shiladi.</p>
+          </div>
+
+          <div class="contact-card">
+            <strong>Telefon</strong>
+            <p>+998 90 123 45 67</p>
+          </div>
+
+          <div class="contact-card">
+            <strong>Telegram</strong>
+            <p>@almazz_ielts</p>
+          </div>
+
+          <div class="contact-card">
+            <strong>Instagram</strong>
+            <p>@almazz_ielts</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <span class="logo-badge">A</span>
+            ALMAZZ
+          </div>
+          <p>Buxorodagi premium IELTS o‘quv markazi. Sizning muvaffaqiyatingiz — bizning maqsadimiz.</p>
+        </div>
+
+        <div>
+          <h4>Tezkor havolalar</h4>
+          <a href="#home">Bosh sahifa</a>
+          <a href="#courses">Kurslar</a>
+          <a href="#mentor">Ustoz</a>
+          <a href="#results">Natijalar</a>
+        </div>
+
+        <div>
+          <h4>Kurslar</h4>
+          <a>IELTS Preparation</a>
+          <a>General English</a>
+          <a>Speaking Club</a>
+          <a>CEFR</a>
+        </div>
+
+        <div>
+          <h4>Aloqa</h4>
+          <p>+998 90 123 45 67</p>
+          <p>@almazz_ielts</p>
+          <p>Buxoro shahri</p>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2026 ALMAZZ IELTS MARKAZI. Barcha huquqlar himoyalangan.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
